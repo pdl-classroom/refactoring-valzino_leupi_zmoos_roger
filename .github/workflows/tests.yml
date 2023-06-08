@@ -1,0 +1,22 @@
+name: Tests unitaires
+
+on:
+  push:
+    branches:
+      - main  # ou la branche sur laquelle vous souhaitez exécuter les tests
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2
+
+    - name: Configuration de Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'  # Remplacez par la version de Java que vous utilisez
+
+    - name: Exécution des tests avec Maven
+      run: mvn test
